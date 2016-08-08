@@ -83,6 +83,8 @@ temp.increment
 end
 
 # Output the data in an ugly table
+# this is a test
+
 
 # rows = []
 table = Terminal::Table.new :title => "Temp Sheet", :headings => ['Day','Temp','Faren'] do |t|
