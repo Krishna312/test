@@ -2,7 +2,7 @@ class Progressbar
   def initialize(start, finish)
     @start = start
     @finish = finish
-    @progress = 0
+    @progress = 1
   end
 
   def increment

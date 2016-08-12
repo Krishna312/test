@@ -27,14 +27,54 @@ end
  print txt.read
  txt.rewind
  balance = txt.read
- puts " withdraw $20"
- puts balance
- balance = (balance.to_i - 20)
- puts balance
- txt.rewind
- txt.close
- txt = open(filename, 'a+')
- # File.truncate('volt.txt',0)
+ system "cls"
+
+ puts "\n"
+ puts "Please choose from the following"
+ puts "1. Withdrawal"
+ puts "2. deposit"
+ puts "3. Balance"
+
+ input = gets.chomp.to_i
+ if input == 1
+        puts "enter the amount you would like to withdraw"
+        withdraw = gets.chomp.to_i
+        # puts balance.to_i
+        if balance.to_i > 0
+        balance = (balance.to_i - withdraw)
+        puts "=" * 20
+        puts "Your new balance is"
+        puts balance
+        puts "=" * 20
+        else
+        puts "You have insufficent fund"
+        end
+   elsif input == 2
+        puts "enter the amount you would like to deposit"
+        deposit = gets.chomp.to_i
+        # puts balance.to_i
+        if balance.to_i >= 0
+        balance = (balance.to_i + deposit)
+        puts "=" * 20
+        puts "Your new balance is"
+        puts balance
+        puts "=" * 20
+      else
+            puts "Deposit More"
+        end
+  elsif input == 3
+      puts "=" * 20
+      puts "Your new balance is"
+      puts balance
+      puts "=" * 20
+      # puts balance.to_i
+  else
+      puts "Wrong Selection"
+
+  end
+
+ txt = open(filename, 'w+')
+
  txt.write(balance)
 
 

@@ -70,11 +70,11 @@ end
 
 # For each Day ask the user for the temperature and Instantiate a Day with a
 # Celsuis object as the temperature attribute.
-temp = Progressbar.new(0,7)
+temp = Progressbar.new(1,7)
 
 dayNames.each do |day|
-
-
+  system "cls"
+temp.Status
   puts "Hi, what was the temperature on #{day}"
   Day.new(day, Celsius.new(gets.chomp.to_i))
   system "cls"
@@ -82,17 +82,14 @@ dayNames.each do |day|
 temp.increment
 end
 
-# Output the data in an ugly table
-# this is a test
-
-
 # rows = []
-table = Terminal::Table.new :title => "Temp Sheet", :headings => ['Day','Temp','Faren'] do |t|
+table = Terminal::Table.new :title => "Temp Sheet", :headings => ['Day','Celcius','Faren'] do |t|
 
   Day.all.each do |day|
-    day.temperature > 29 ? colour1= "\e[31m#{day.temperature}\e" : colour1= "\e[31m#{day.temperature("fahrenheit")}\e"
-    day.temperature > 29 ? colour2= "\e[34m#{day.temperature}\e" : colour2= "\e[34m#{day.temperature("fahrenheit")}\e"
-t << [day.name, day.temperature("celsius"), day.temperature("fahrenheit")]
+    day.temperature>29 ? colour1= "\e[31m#{day.temperature}\e[0m" : colour1= "\e[34m#{day.temperature("fahrenheit")}\e[0m"
+    day.temperature<29 ? colour2= "\e[34m#{day.temperature}\e[0m" : colour2= "\e[31m#{day.temperature("fahrenheit")}\e[0m"
+t << [day.name, colour1, colour2]
+# t << [day.name, day.temperature("celsius"), day.temperature("fahrenheit")]
 end
 
 end
