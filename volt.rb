@@ -77,7 +77,6 @@ end
 
  txt.write(balance)
 
-
  txt.rewind
 
  txt.close
